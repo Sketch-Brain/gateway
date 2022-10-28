@@ -5,12 +5,11 @@ metadata:
    labels:
       app: sketchbrain-gateway
 spec:
-   type: NodePort
+   type: ClusterIP
    ports:
    - name: gateway-port
      port: 8088
      targetPort: 8088
-     nodePort: 30088
    selector:
         app: sketchbrain-gateway
 
