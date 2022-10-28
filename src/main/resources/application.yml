@@ -1,0 +1,52 @@
+server:
+  port: 8088
+---
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: backend-svc
+          uri: http://sketchbrain-backend-svc:8080
+          predicates:
+            - Path=/api/server/**
+          filters:
+            - name: BackendFilter
+              args:
+                baseMessage: Spring Cloud Gateway UserFilter
+                preLogger: true
+                postLogger: true
+          metadata:
+            connect-timeout: 2500
+            response-timeout: 2500
+        - id: fileserver-svc
+          uri: http://sketch-brain-file-server-svc:8080
+          predicates:
+            - Path=/api/file/**
+          filters:
+            - name: FileServerFilter
+              args:
+                baseMessage: Spring Cloud Gateway UserFilter
+                preLogger: true
+                postLogger: true
+          metadata:
+            connect-timeout: 2500
+            response-timeout: 2500
+        - id: ui-svc
+          uri: http://sketchbrain-ui-svc:3000
+          predicates:
+            - Path=/**
+          filters:
+            - name: UserFilter
+              args:
+                 baseMessage: Spring Cloud Gateway UI-Filter
+                 preLogger: true
+                 postLogger: true
+          metadata:
+            connect-timeout: 2500
+            response-timeout: 2500
+

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sketchbrain-gateway-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sketchbrain-gateway
+  template:
+    metadata:
+      labels:
+        app: sketchbrain-gateway
+    spec:
+      containers:
+        - name: sketchbrain-gateway
+          image: #VERSION_STRING#
+          ports:
+            - name: gateway-port
+              containerPort: 8088
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: tz-seoul
+              mountPath: /etc/localtime
+      volumes:
+        - name: tz-seoul
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Seoul
+

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+   namespace: tor
+   name: sketchbrain-gateway-svc
+   labels:
+      app: sketchbrain-gateway
+spec:
+   type: NodePort
+   ports:
+   - name: gateway-port
+     port: 8088
+     targetPort: 8088
+     nodePort: 30088
+   selector:
+        app: sketchbrain-gateway
+
