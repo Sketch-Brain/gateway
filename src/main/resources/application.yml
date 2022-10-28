@@ -17,7 +17,7 @@ spring:
           filters:
             - name: BackendFilter
               args:
-                baseMessage: Spring Cloud Gateway UserFilter
+                baseMessage: Spring Cloud Gateway BackendFilter
                 preLogger: true
                 postLogger: true
           metadata:
@@ -30,7 +30,7 @@ spring:
           filters:
             - name: FileServerFilter
               args:
-                baseMessage: Spring Cloud Gateway UserFilter
+                baseMessage: Spring Cloud Gateway FileServerFilter
                 preLogger: true
                 postLogger: true
           metadata:
@@ -41,9 +41,9 @@ spring:
           predicates:
             - Path=/**
           filters:
-            - name: UserFilter
+            - name: UIFilter
               args:
-                 baseMessage: Spring Cloud Gateway UI-Filter
+                 baseMessage: Spring Cloud Gateway UIFilter
                  preLogger: true
                  postLogger: true
           metadata:
