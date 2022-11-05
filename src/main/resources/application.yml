@@ -11,13 +11,13 @@ spring:
             postLogger: true
       routes:
         - id: training-svc
-          uri: http://sketchbrain-trainer-svc:9000
+          uri: http://sketchbrain-trainer-svc:8080
           predicates:
             - Path=/api/trainer/**
           filters:
             - name: TrainerFilter
               args:
-                baseMessage: Trainer Filters
+                baseMessage: Spring Cloud Gateway TrainerFilter
                 preLogger: true
                 postLogger: true
           metadata:
