@@ -11,7 +11,7 @@ spring:
             postLogger: true
       routes:
         - id: training-svc
-          uri: http://sketchbrain-trainer-svc:8080
+          uri: http://sketchbrain-trainer-svc:9000
           predicates:
             - Path=/api/trainer/**
           filters:

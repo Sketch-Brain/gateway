@@ -9,21 +9,22 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 @Component
 public class CorsFilter {
-//    @Bean
-//    CorsWebFilter corsWebFilter(){
-//        CorsConfiguration corsConfig = new CorsConfiguration();
-//        corsConfig.addAllowedOrigin("*");
-//        corsConfig.setMaxAge(8000L);
-//        corsConfig.addAllowedMethod(HttpMethod.GET);
-//        corsConfig.addAllowedMethod(HttpMethod.POST);
-//        corsConfig.addAllowedMethod(HttpMethod.OPTIONS);
-//        corsConfig.addAllowedMethod(HttpMethod.DELETE);
-//        corsConfig.addAllowedMethod(HttpMethod.PUT);
-//        corsConfig.addAllowedHeader("Content-Type");
-//
-//        UrlBasedCorsConfigurationSource source =
-//                new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", corsConfig);
-//        return new CorsWebFilter(source);
-//    }
+    @Bean
+    CorsWebFilter corsWebFilter(){
+        CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.addAllowedOrigin("*");
+        corsConfig.setMaxAge(8000L);
+        corsConfig.addAllowedMethod(HttpMethod.GET);
+        corsConfig.addAllowedMethod(HttpMethod.POST);
+        corsConfig.addAllowedMethod(HttpMethod.OPTIONS);
+        corsConfig.addAllowedMethod(HttpMethod.DELETE);
+        corsConfig.addAllowedMethod(HttpMethod.PUT);
+        corsConfig.addExposedHeader("*");
+        corsConfig.addAllowedHeader("Content-Type");
+
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfig);
+        return new CorsWebFilter(source);
+    }
 }
