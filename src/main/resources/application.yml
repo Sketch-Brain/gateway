@@ -15,9 +15,9 @@ spring:
           predicates:
             - Path=/api/trainer/**
           filters:
-            - name: BackendFilter
+            - name: TrainerFilter
               args:
-                baseMessage: Spring Cloud Gateway BackendFilter
+                baseMessage: Trainer Filters
                 preLogger: true
                 postLogger: true
           metadata:
