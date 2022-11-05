@@ -10,6 +10,19 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+        - id: training-svc
+          uri: http://sketchbrain-trainer-svc:9000
+          predicates:
+            - Path=/api/trainer/**
+          filters:
+            - name: BackendFilter
+              args:
+                baseMessage: Spring Cloud Gateway BackendFilter
+                preLogger: true
+                postLogger: true
+          metadata:
+            connect-timeout: 2500
+            response-timeout: 2500
         - id: backend-svc
           uri: http://sketchbrain-backend-svc:8080
           predicates:
