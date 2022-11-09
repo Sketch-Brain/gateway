@@ -19,6 +19,7 @@ public class CorsFilter {
         corsConfig.addAllowedMethod(HttpMethod.OPTIONS);
         corsConfig.addAllowedMethod(HttpMethod.DELETE);
         corsConfig.addAllowedMethod(HttpMethod.PUT);
+        corsConfig.addAllowedMethod(HttpMethod.PATCH);
         corsConfig.addExposedHeader("*");
         corsConfig.addAllowedHeader("Content-Type");
 
