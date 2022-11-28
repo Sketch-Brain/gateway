@@ -15,14 +15,14 @@ spring:
           predicates:
             - Path=/api/trainer/**
           filters:
-            - name: BackendFilter
+            - name: TrainerFilter
               args:
-                baseMessage: Spring Cloud Gateway BackendFilter
+                baseMessage: Spring Cloud Gateway TrainerFilter
                 preLogger: true
                 postLogger: true
           metadata:
-            connect-timeout: 2500
-            response-timeout: 2500
+            connect-timeout: 6000
+            response-timeout: 9000
         - id: backend-svc
           uri: http://sketchbrain-backend-svc:8080
           predicates:
